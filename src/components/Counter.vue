@@ -6,7 +6,17 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
+
+import { ref, watch, onMounted } from 'vue';
+
+onMounted(() => {
+	const storedCount = localStorage.getItem('count');
+	console.log('storedCount', storedCount);
+	if(storedCount) {
+		count.value = parseInt(storedCount);
+	}
+})
+
 const count = ref(0);
 function increment() {
 	count.value++;
@@ -14,6 +24,11 @@ function increment() {
 function decrement() {
 	count.value--;
 }
+
+watch(count, () => {
+	localStorage.setItem('count', count.value.toString());
+})
+
 </script>
 
 <style scoped lang="scss">
