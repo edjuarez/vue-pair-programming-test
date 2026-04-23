@@ -2,11 +2,15 @@
     <div class="todo-list"> 
         <h2>Todo List</h2>
 
-        <input 
+        <!-- <input 
             type="text" 
             id="fname" 
             name="fname"
             placeholder="Filter items..." v-model="filterText" 
+        /> -->
+        <ItemFilter 
+            v-model="filterText"
+            v-on:add="addNewItem"
         />
 
         <button class="add"v-on:click="addNewItem()" >
@@ -30,6 +34,7 @@
 </template>
 
 <script setup>
+import ItemFilter from "./ItemFilter.vue";
 import { ref, computed, watch, onMounted } from "vue";
 
 const defaulItems = [
@@ -73,6 +78,7 @@ const reset = () => {
 }
 
 watch(items, () => {
+    console.log(items.value)
   localStorage.setItem("items", JSON.stringify(items.value))
 })
 
@@ -98,9 +104,7 @@ li {
   align-items: center;
   justify-content: space-between;
   background: #f7f7f7;
-  padding: 8px;
   border-radius: 6px;
-  margin-bottom: 8px;
 }
 .delete {
   background: #e74c3c;
