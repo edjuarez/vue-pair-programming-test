@@ -2,12 +2,6 @@
     <div class="todo-list"> 
         <h2>Todo List</h2>
 
-        <!-- <input 
-            type="text" 
-            id="fname" 
-            name="fname"
-            placeholder="Filter items..." v-model="filterText" 
-        /> -->
         <ItemFilter 
             v-model="filterText"
             v-on:add="addNewItem"
@@ -78,9 +72,8 @@ const reset = () => {
 }
 
 watch(items, () => {
-    console.log(items.value)
   localStorage.setItem("items", JSON.stringify(items.value))
-})
+}, { deep: true })
 
 </script>
 
@@ -88,23 +81,22 @@ watch(items, () => {
 .todo-list {
   margin-top: 20px;
 }
-input {
-  margin-bottom: 10px;
-  padding: 6px;
-}
 ul {
   list-style: none;
   padding: 0;
-  width: 100px;
+  width: 300px;
   margin-left: auto;
   margin-right: auto;
 }
 li {
   display: flex;
-  align-items: center;
   justify-content: space-between;
-  background: #f7f7f7;
-  border-radius: 6px;
+  align-items: center;
+  padding: 5px 5px;
+  margin-bottom: 10px;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  height: 20px;
 }
 .delete {
   background: #e74c3c;
