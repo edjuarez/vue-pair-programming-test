@@ -7,7 +7,7 @@ describe('Counter.vue', () => {
     localStorage.clear();
   });
         
-  it('debe incrementar el contador al hacer clic en el botón de incremento', async () => {
+  it('should increment counter when click on increment button', async () => {
     const wrapper = mount(Counter);
     
     const button = wrapper.find('.increment');
@@ -16,7 +16,7 @@ describe('Counter.vue', () => {
     expect(wrapper.text()).toContain('1');
   });
 
-  it('debe decrementar el contador al hacer clic en el botón de decremento', async () => {
+  it('should decrement counter when click on decrement button', async () => {
     const wrapper = mount(Counter);
     const button = wrapper.find('.decrement');
     
