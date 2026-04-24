@@ -7,14 +7,10 @@
             v-on:add="addNewItem"
         />
 
-        <button class="add"v-on:click="addNewItem()" >
-            Add
-        </button>
-        <button v-on:click="reset()" >
-            Reset
-        </button>
+        <button v-on:click="addNewItem()" class="add">Add</button>
+        <button v-on:click="reset()" class="reset">Reset</button>
 
-        <p v-if="filteredItems.length === 0"> No results </p>
+        <p v-if="filteredItems.length === 0">No results</p>
 
         <ul>
             <li v-for="item in filteredItems">

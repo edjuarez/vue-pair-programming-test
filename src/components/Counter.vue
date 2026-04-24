@@ -1,8 +1,9 @@
 <template>
 	<h1>Counter</h1>
 	<p>Current Count: {{ count }}</p>
-	<button @click="increment">Increment</button>
-	<button @click="decrement">Decrement</button>
+	<button @click="increment" class="increment">Increment</button>
+	<button @click="decrement" class="decrement">Decrement</button>
+	<button v-on:click="reset()" >Reset </button>
 </template>
 
 <script setup lang="ts">
@@ -23,6 +24,9 @@ function increment() {
 }
 function decrement() {
 	count.value--;
+}
+function reset() {
+	count.value = 0;
 }
 
 watch(count, () => {
